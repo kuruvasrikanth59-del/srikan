@@ -1,1 +1,557 @@
-hi everyone
+Algorithm / Procedure:
+Step 1: Initialize Git Repository (Local Version Control Setup)
+- Create a project folder.
+- Open terminal and navigate to the folder.
+- Run: git init
+- Create a simple Python file (example: app.py) with basic code and a test case.
+- Stage and commit changes:
+git add .
+git commit -m "Initial Commit"
+Step 2: Push to Remote Repository (GitHub Integration)
+- Create a new repository on GitHub (name: ci-lab-demo).
+- Link local repository to GitHub:
+git remote add origin https://github.com/username/ci-lab-demo.git
+- Push the code to GitHub:
+git branch -M main
+git push -u origin main
+Step 3: Configure CI Pipeline (GitHub Actions)
+- Create a directory .github/workflows/ in the project.
+- Create a file ci-pipeline.yml in that folder.
+- Add the following YAML to define CI workflow:
+(name: CI Pipeline)
+(on: push and pull_request to main branch)
+(jobs: build with ubuntu-latest)
+(steps include: checkout code, setup python, install dependencies, run tests)
+Step 4: Trigger and Observe CI Execution
+- Commit and push .github/workflows/ci-pipeline.yml file.
+- Visit GitHub > Actions tab to see the pipeline triggered.
+- Observe results: Success if all tests pass, Failure if any test fails.
+Sample Code (app.py):
+def add(a, b):
+return a + b
+def test_add():
+assert add(2, 3) == 5
+Result:
+The experiment was successfully completed, and Continuous Integration (CI) pipeline was implemented
+using GitHub Actions along with Git version control. Each code change triggered an automated build and test
+process.
+Observation:
+| Step | Observation |
+|---|---|
+| Git Initialization | Local repository initialized successfully |
+| Push to GitHub | Code visible on GitHub |
+| CI Workflow Added | Workflow file committed and pushed |
+| CI Execution | Automated build and test run visible in Actions tab |
+| Final Output | Success (Green Tick) on passing tests |
+Viva Questions:
+- What is the role of version control in DevOps?
+- Define Continuous Integration (CI).
+- Explain the structure of a GitHub Actions workflow file.
+- Why is YAML used in CI configuration?
+- How does GitHub Actions detect new code changes?
+Conclusion:
+This experiment demonstrated how to set up version control using Git and implement a continuous
+integration pipeline using GitHub Actions. This ensures every code commit is automatically verified through
+tests, improving code quality and enabling faster releases.
+
+Advantages:
+- Automated testing ensures fewer bugs reach production.
+- Developers get fast feedback on code changes.
+- Integration issues are detected early.
+Applications:
+- Modern software development teams use CI in every project.
+- Essential in Agile and DevOps workflows.
+- Used in Open Source projects to maintain code quality.
+
+
+Experiment No- 2
+AIM:
+Setting Up a Scrum or Kanban Board for Task Management
+Objective:
+To learn and demonstrate the process of setting up and using a Scrum Board or Kanban Board for effective task management in software development projects. These boards help teams visualize work, improve collaboration, and maintain continuous delivery, which is especially useful in Agile environments.
+Software/Hardware Requirements:
+- Computer with Linux/Windows OS
+- Internet Connection
+- Trello / Jira / GitHub Projects account
+- Web Browser
+Theory:
+In Agile Project Management, teams use visual boards to manage tasks and workflows effectively. Two
+popular methodologies are Scrum and Kanban.
+1. Scrum Board:
+- Scrum is a framework used for iterative development.
+- Work is divided into Sprints (short development cycles, typically 1-4 weeks).
+- A Scrum Board visually tracks tasks through stages like: Backlog, To Do, In Progress, Done.
+- Scrum Boards are typically reset at the start of each sprint, ensuring they only show work planned for the
+current sprint.
+2. Kanban Board:
+- Kanban focuses on continuous delivery.
+- Work items flow continuously through stages without fixed sprints.
+- A Kanban Board tracks tasks through customizable stages like: To Do, In Progress, Review, Completed.
+- Kanban Boards are continuous, meaning tasks are added and completed without resetting the board.
+Algorithm:
+Algorithm / Procedure:
+1. Choose a Tool
+- Open Trello, Jira, or GitHub Projects.
+- Create a new board for your project.
+2. Define Board Type
+- Select either Scrum Board or Kanban Board based on your process needs.
+3. Create Columns (Workflow Stages)
+- The columns should reflect the actual workflow followed by your team.
+- Scrum: Product Backlog, Sprint Backlog, To Do, In Progress, Done
+- Kanban: To Do, In Progress, Review, Completed
+4. Add Tasks (Cards)
+- Add individual tasks as cards in appropriate columns.
+- Each task should have: Title, Description, Assignee, Due Date (optional)
+5. Track and Update Tasks
+- Move cards across columns to track progress.
+- Use daily standups (Scrum) or regular syncs (Kanban).
+6. Review and Retrospect
+- Review the board after each sprint (Scrum) or periodically (Kanban).
+- Discuss improvements and bottlenecks.
+Sample Board Screenshot (Example Layout):
+| Column | Example Task |
+|----------------|-------------------------------|
+| Product Backlog | Define Login API |
+| Sprint Backlog | Set up Database Schema |
+| To Do | Create Frontend UI |
+| In Progress | Implement User Authentication |
+| Done | Set Up Project Repository |
+Result:
+The experiment was successfully completed, and a Scrum/Kanban Board was created using
+Trello/Jira/GitHub Projects. The team learned how to visually manage tasks and improve workflow
+transparency.
+Observation Table:
+| Step | Observation |
+|----------------|----------------|
+| Board Creation | New board created successfully |
+| Columns Added | Workflow stages added correctly |
+| Tasks Created | Cards added with details (title, description, assignee) |
+| Task Movement | Cards moved across columns to reflect progress |
+Conclusion:
+This experiment demonstrated how to set up and use a Scrum or Kanban Board for effective task
+management. By visualizing work items and tracking their progress, teams can collaborate better, identify
+bottlenecks early, and improve productivity. Both boards also help teams adapt to changing requirements,
+which is a key benefit in Agile development.
+
+Experiment No- 3
+AIM:
+Implementing Continuous Testing in the DevOps Lifecycle
+Objective:
+To implement Continuous Testing in the DevOps lifecycle using Jenkins and Maven for a sample project.
+The process will automatically test the project whenever new code is pushed to the repository, ensuring continuous quality Software/Hardware Requirements:
+- Operating System: Windows / Linux
+  Tools:
+- Java
+- Maven
+- Git
+- Jenkins with Plugins (Git plugin, Maven Integration plugin, JUnit plugin)
+Theory:
+What is Continuous Testing?
+Continuous Testing is a process where automated tests are integrated into the software delivery pipeline
+to validate the quality of applications at each step. This ensures faster feedback and quicker release cycles in DevOps
+Algorithm:
+Step 1: Install Prerequisites
+- Install Java, Maven, and Git.
+- Download and install Jenkins.
+- Install required Jenkins plugins: Git plugin, Maven Integration plugin, JUnit plugin
+Step 2: Create a Sample Maven Project
+Structure:
+sample-app/
+|-- src/
+| |-- main/
+| | `-- java/
+| |-- test/
+| `-- java/
+| `-- TestCalculator.java
+|-- pom.xml
+Step 3: Implement Sample Code (Calculator.java)
+public class Calculator {
+public int add(int a, int b) { return a + b; }
+public int subtract(int a, int b) { return a - b; }
+}
+Step 4: Create JUnit Test (TestCalculator.java)
+import org.junit.Test;
+import static org.junit.Assert.*;
+public class TestCalculator {
+@Test public void testAddition() {
+Calculator calc = new Calculator();
+assertEquals(10, calc.add(5, 5));
+}
+@Test public void testSubtraction() {
+Calculator calc = new Calculator();
+assertEquals(3, calc.subtract(5, 2));
+}
+}
+Step 5: Configure Maven (pom.xml)
+<dependencies>
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.13.2</version>
+<scope>test</scope>
+</dependency>
+</dependencies>
+Step 6: Initialize Git Repository
+git init
+git add .
+git commit -m "Initial project with tests"
+Step 7: Setup Jenkins Job for Continuous Testing
+- Open Jenkins at: http://localhost:8080
+- Create Freestyle Project: SampleApp-CI
+- Link to Git repository, enable Poll SCM (H/5 * * * *)
+- Add Build Step: mvn clean test
+- Add Post-build Action: Publish JUnit report (target/surefire-reports/*.xml)
+Step 8: Commit and Push Changes
+git add .
+git commit -m "Add continuous testing"
+git push origin main
+Step 9: Observe Results in Jenkins
+- Check Build History, Console Output, and Test Results tab.
+Result:
+The experiment was successfully completed. Continuous Testing was implemented using Jenkins, Git, and Maven in Observation Table:
+| Step | Observation |
+|-------------------|-------------------------------------|
+| Install Tools | Java, Maven, Git, Jenkins installed |
+| Project Creation | Maven project created |
+| Git Initialized | Repository initialized in Git |
+| Jenkins Job | Jenkins job configured |
+| Trigger & Observe | Build triggered, tests executed |
+| Result Observed | Test results displayed in Jenkins |
+Conclusion:
+This experiment demonstrated Continuous Testing in the DevOps lifecycle using Jenkins and Maven, ensuring continuous Advantages:
+- Early defect detection.
+- Automated test execution.
+- Reduces manual testing.
+- Faster developer feedback.
+Applications:
+- Used in DevOps pipelines.
+- Applied in CI/CD.
+- Supports Agile teams.
+- Ensures production-ready quality.
+
+Experiment No- 4
+AIM:
+To explore and practice basic Git and GitHub commands.
+OBJECTIVES:
+Understand version control concepts.
+Learn basic Git commands for local repository management.
+Explore GitHub for remote repository handling.
+MATERIALS REQUIRED:
+A computer with Git installed.
+A GitHub account.
+Internet connection.
+THEORY:
+Git is a distributed version control system used for tracking changes in source code during software development. GitHub is a cloud-based hosting service that helps developers manage Git repositories collaboratively.
+PROCEDURE:
+Step 1: Install Git
+Check if Git is installed:
+git --version
+If not installed, download and install Git from https://git-scm.com/.
+Step 2: Configure Git
+Set up user information:
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+Step 3: Initialize a Local Repository
+Create a new directory and navigate into it:
+mkdir my-project
+cd my-project
+Initialize Git:
+git init
+Step 4: Create and Commit Files
+Create a new file:
+echo "Hello, Git!" > README.md
+Add the file to staging:
+git add README.md
+Commit the changes:
+git commit -m "Initial commit"
+Step 5: Connect to GitHub
+Create a new repository on GitHub (without initializing README).
+Add the remote repository:
+git remote add origin https://github.com/your-username/my-project.git
+Step 6: Push Changes to GitHub
+Push the local commits to GitHub:
+git branch -M main
+git push -u origin main
+Step 7: Clone a Repository
+Clone a GitHub repository:
+git clone https://github.com/your-username/my-project.git
+Step 8: Pull and Fetch Changes
+Fetch the latest changes from the remote repository:
+git fetch
+Pull changes into your local repository:
+git pull origin main
+Step 9: Branching and Merging
+Create a new branch:
+git branch feature-branch
+Switch to the new branch:
+git checkout feature-branch
+Merge the branch:
+git checkout main
+git merge feature-branch
+Step 10: Undoing Changes
+Revert the last commit:
+git revert HEAD
+Reset to a previous state:
+git reset --hard <commit-hash>
+OBSERVATIONS:
+Noted how Git tracks changes in files.
+Understood the role of GitHub in collaboration.
+Learned different Git commands for version control.
+CONCLUSION:
+This experiment helped in understanding the fundamental Git and GitHub commands used in version control and collaborative development.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment No- 5
+AIM:
+Creating a New Git Repository and Pushing Changes to a Remote Repository
+
+Objective:
+ To understand and implement the process of creating a Git repository, adding a README file, committing changes, and pushing them to a remote repository.
+Requirements:
+Git installed on your system
+A GitHub account
+Internet connection
+Algorithm:
+Initialize a Git Repository:
+Open the terminal or command prompt.
+Navigate to the desired directory where you want to create the repository.
+Run the following command to initialize the repository:
+      git init
+Create a README File:
+Use the following command to create a README file:
+echo "# My New Repository" > README.md
+Alternatively, create the file manually and add some content.
+Add the README File to Staging Area:
+Use the following command to add the file to the staging area:
+git add README.md
+Commit the Changes:
+Commit the added file using the following command:
+git commit -m "Initial commit: Added README file"
+Create a Remote Repository on GitHub:
+Log in to your GitHub account.
+Click on the "+" icon and select "New repository".
+Enter a repository name and description.
+Choose "Public" or "Private" as per requirement.
+Click "Create repository".
+Link the Local Repository to Remote Repository:
+Copy the repository URL from GitHub.
+Run the following command to add the remote origin:
+git remote add origin <repository_url>
+Push the Changes to Remote Repository:
+Use the following command to push the changes:
+git push -u origin main
+If the default branch is "master", use:
+git push -u origin master
+Verification:
+Go to your GitHub repository page and verify that the README file has been uploaded successfully.
+Conclusion: By following these steps, we successfully created a Git repository, added a README file, committed the changes, and pushed them to a remote repository on GitHub.
+
+
+
+
+Experiment No- 6
+AIM:
+Create a new branch called "MITS" and make some changes to a file. Commit the changes and merge the branch with the main branch.
+	
+ Objective:
+To understand the process of creating a new branch in Git, making changes to a file, committing those changes, and merging the branch back into the main branch.
+Requirements:
+Git installed on the system
+A working terminal or command prompt
+
+Procedure:
+
+Step 1: Initialize a Git Repository
+```bash
+git init
+```
+This command initializes a new Git repository in the current directory.
+
+Step 2: Create a New Branch
+```bash
+git checkout -b MITS
+```
+This command creates a new branch named "MITS" and switches to it.
+
+Step 3: Make Changes to a File
+```bash
+echo "This is a test change in the MITS branch." > sample.txt
+```
+This command creates a new file named `sample.txt` and writes some content into it.
+
+Step 4: Add and Commit the Changes
+```bash
+git add sample.txt
+git commit -m "Added sample.txt with initial content in MITS branch"
+```
+These commands stage and commit the changes made to `sample.txt`.
+
+Step 5: Switch Back to the Main Branch
+```bash
+git checkout main
+```
+This command switches back to the main branch.
+
+Step 6: Merge the MITS Branch with the Main Branch
+```bash
+git merge MITS
+```
+This command merges the `MITS` branch into the `main` branch.
+
+Step 7: Delete the MITS Branch (Optional)
+```bash
+git branch -d MITS
+```
+This command deletes the `MITS` branch after merging.
+
+Expected Output:
+- A new branch `MITS` is created.
+- Changes are made to `sample.txt`.
+- The changes are committed and merged back into the `main` branch.
+- The `MITS` branch is deleted after merging.
+
+Conclusion:
+This experiment demonstrates the fundamental operations of branching, modifying files, committing changes, and merging branches in Git, which are essential for version control in software development.
+
+
+
+
+
+
+
+Experiment No-7
+AIM:
+Use Git log to view the commit history of a repository and find the commit hash of a specific commit.
+
+Objective: 
+To understand how to use git log to view the commit history of a Git repository and retrieve the commit hash of a specific commit.
+Requirements:
+A computer with Git installed
+A pre-existing Git repository or a newly initialized repository
+Basic knowledge of Git commands
+Procedure:
+Setting Up the Environment:
+Open a terminal (Command Prompt, Git Bash, or Terminal).
+Navigate to the repository using the cd command.
+cd path/to/your/repository
+Viewing the Commit History:
+Use the git log command to display the commit history.
+git log
+This command will show the commit history with details like commit hash, author, date, and commit message.
+Finding a Specific Commit Hash:
+Scroll through the commit history and locate the commit message corresponding to the commit of interest.
+The commit hash is the long alphanumeric string at the beginning of each commit entry.
+Filtering the Commit History:
+Use the --oneline option to display a simplified history.
+git log --oneline
+This shows only the commit hashes and messages in a single line per commit.
+Example output:
+a1b2c3d Update README file
+e4f5g6h Fix login bug
+i7j8k9l Initial commit
+Identify the hash of the required commit from this output.
+Searching for a Specific Commit Message:
+Use git log --grep="commit message" to search for a commit by message.
+git log --grep="Fix login bug"
+Viewing Commit Details Using Commit Hash:
+Once the commit hash is identified, use it to view detailed information about the commit.
+git show a1b2c3d
+Observations:
+The commit history provides a chronological view of repository changes.
+The commit hash uniquely identifies each commit.
+Filtering options help quickly locate a specific commit.
+
+
+
+
+
+
+
+
+
+Experiment No- 8
+AIM:
+Cloning a Git Repository from a Remote Repositor
+
+Objective: To understand and perform the process of cloning a Git repository from a remote repository using Git commands.
+Prerequisites:
+Basic understanding of Git and version control.
+Git installed on the system.
+An active internet connection.
+A GitHub, GitLab, or Bitbucket account.
+Materials Required:
+A computer with Git installed.
+A pre-existing repository URL from a remote platform (GitHub, GitLab, etc.).
+Step 1: Verify Git Installation
+Step 1: Verify Git Installation
+Open the terminal or command prompt.
+Run the following command to check if Git is installed:
+git --version
+If Git is not installed, download and install it from Git Official Website.
+Step 2: Navigate to the Desired Directory
+Choose a directory where you want to clone the repository.
+Use the cd command to navigate to that directory:
+cd path/to/your/directory
+Step 3: Clone the Repository
+Copy the repository URL from the remote platform (GitHub, GitLab, etc.).
+Run the following command to clone the repository:
+git clone <repository_url>
+Example:
+git clone https://github.com/example-user/example-repo.git
+This command downloads the repository to your local system.
+Step 4: Verify Cloning
+Navigate into the cloned repository:
+cd example-repo
+List the files to check the contents:
+ls  (Linux/macOS)
+dir (Windows)
+Check the remote repository link:
+git remote -v
+Step 5: Make a Change and Push to Remote (Optional)
+Create a new file inside the cloned repository:
+echo "Hello Git" > testfile.txt
+Add the file to the staging area:
+git add testfile.txt
+Commit the changes:
+git commit -m "Added testfile.txt"
+Push the changes to the remote repository:
+git push origin main
+
+Expected Outcome: Students should be able to successfully clone a Git repository, navigate within it, and optionally make changes and push updates to the remote repository.
+
+
+
+Experiment No- 9
+AIM:
+Pushing Changes from Local Repository to Remote Repository Using Git.
+Objective: To understand and perform the process of pushing local repository changes to a remote repository using Git.
+Prerequisites:
+Basic knowledge of Git and GitHub.
+Git installed on the system.
+A GitHub account.
+Software & Tools Required:
+Git
+GitHub
+Command Line Interface (CLI) or Git Bash
+Theory: Version control systems help track changes in code over time. Git is a distributed version control system that allows multiple developers to work collaboratively. Pushing changes means transferring committed changes from a local repository to a remote repository.
+Experimental Setup:
+Install Git 
